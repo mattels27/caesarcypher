@@ -86,13 +86,29 @@ while menu:
             a_variables=[]
 
             for k in range(2, a):
-               if gcd(k, a)==1:
+               if gcd(k, a) == 1:
                     a_variables.append(k)
+            
+            def random_a_key_choose(a_variables):
+                return random.choice(a_variables)
+            
+            def random_b_key_choose(a):
+                return random.randint(1, a)
 
-            print('Os valores de "a" disponíveis são:')
+            a_key= random_a_key_choose(a_variables)
+            b_key= random_b_key_choose(a)
+
+            alt_key_a= mod_inverse(a_key, a)
+            alt_key_b= -((a - int(b_key)) * alt_key_a)*(-1)
+
+
+            print('Sua chave aleatória é:')
             print()
-            print(a_variables)
+            print(f'{a_key}x + {b_key} ')
             print()
+            print('E sua chave para decifrar: ')
+            print()
+            print(f'{alt_key_a}x + {alt_key_b}')
             print('1. Gerar mais chaves')
             print('2. Voltar ao menu')
             choice=input('Digite: ')
