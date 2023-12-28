@@ -136,9 +136,9 @@ def key_generate_process():
 
     try:
         len_alphabet = int(entry_alphabet_length.get())
-    except TypeError:
-        result_text.delete(1.0, tk.END)
-        result_text.insert(tk.END, "Erro: Valor inválido, por favor insira um valor válido.")
+    except ValueError:
+        key_text.delete(1.0, tk.END)
+        key_text.insert(tk.END, "Erro: Valor inválido.")
         return
     
     generated_key= key_generate_algorithm(len_alphabet)
@@ -194,7 +194,7 @@ result_text.grid(row=14, column=0, padx=10, pady=10)
 result_key_label = tk.Label(root, text="Sua chave aleatória é:")
 result_key_label.grid(row=4, column=5, padx=10, pady=10)
 
-key_text = tk.Text(root, height=1, width=20)
+key_text = tk.Text(root, height=1, width=21)
 key_text.grid(row=5, column=5, padx=10, pady=10)
 
 root.mainloop()
